@@ -1,0 +1,3 @@
+com.hyf.dubbo.impl.AInvoker
+com.hyf.dubbo.impl.BInvoker
+com.hyf.dubbo.impl.CInvoker

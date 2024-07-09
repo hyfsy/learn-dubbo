@@ -1,0 +1,31 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: dubbo-producer
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr: 127.0.0.1:8848
+#        namespace: dubbo
+dubbo:
+  protocol:
+    # dubbo 协议
+#    id: dubbo
+    name: dubbo
+    # dubbo 协议端口（ -1 表示自增端口，从 20880 开始）
+    port: 20880
+#  consumer:
+#    timeout: 10000
+#    validation: true # 开启 Consumer 参数校验
+#    check: false # 本地启动，不进行校验，不一定会使用到未启动的服务
+  cloud:
+    subscribed-services: dubbo-producer # 订阅的服务
+  registry:
+    address: nacos://127.0.0.1:8848 # 使用spring-cloud的配置中心
+    parameters:
+      namespace: dubbo-namespace
+    use-as-config-center: true # 能根据服务治理规则对配置变更进行响应
+    use-as-metadata-center: true # 会将元数据信息放入到注册中心的metadata内
+  scan:
+    base-packages: com.hyf.dubbo.service # rpc组件扫描的包

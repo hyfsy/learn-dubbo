@@ -1,0 +1,31 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: dubbo-consumer
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr: 127.0.0.1:8848
+#        namespace: dubbo-namespace
+dubbo:
+#  config:
+#    override: true # 用spring的环境配置覆盖dubbo的配置
+#  scan:
+#    base-packages: com.hyf.dubbo.service
+  protocol:
+    # dubbo 协议
+#    id: dubbo
+    name: dubbo
+    # dubbo 协议端口（ -1 表示自增端口，从 20880 开始）
+    port: 20881
+#  consumer:
+#    timeout: 10000
+#    validation: true # 开启 Consumer 参数校验
+#    check: false # 本地启动，不进行校验，不一定会使用到未启动的服务
+  cloud:
+    subscribed-services: dubbo-producer
+  registry:
+    address: nacos://127.0.0.1:8848
+    parameters:
+      namespace: dubbo-namespace
